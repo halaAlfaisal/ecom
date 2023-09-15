@@ -17,7 +17,9 @@
     "test:e2e:run": "cross-env PORT=8811 start-server-and-test start:mocks http://localhost:8811 \"npx cypress run\"",
     "typecheck": "tsc && tsc -p cypress",
     "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run",
-    "seedDb": "npx prisma db seed"
+    "seedDb": "npx prisma db seed",
+    "migrateDb": "npx prisma migrate dev --name 'create db model'",
+    "openPrisma": "npx prisma studio"
   },
   "prettier": {},
   "eslintIgnore": [

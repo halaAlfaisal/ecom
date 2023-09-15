@@ -6,7 +6,7 @@ export const loader = async () => {
 };
 
 export default function Cart() {
-  const { getCart, clearCart } = useCartActions();
+  const { getCart } = useCartActions();
   const cartItems = getCart();
 
   return (
@@ -20,7 +20,6 @@ export default function Cart() {
             <div className="mx-auto mt-10 sm:justify-center">
               <Link
                 to="/"
-                onClick={() => clearCart()}
                 className="flex items-center justify-center rounded-md bg-lime-500 px-4 py-2 font-medium text-white hover:bg-lime-600"
               >
                 Back to stellar page

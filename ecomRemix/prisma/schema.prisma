@@ -46,3 +46,25 @@ model Item {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+
+model OrderItem {
+  id      String  @id @default(uuid())
+  itemId  String
+  orderId String
+  name    String
+  description String
+  price   Int
+  quantity Int
+  imgSrc   String
+  order   Order   @relation(fields: [orderId], references: [id])
+}
+
+model Order {
+  id       String     @id @default(uuid())
+  total    String
+  items    OrderItem[]
+  status   String     @default("new")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
