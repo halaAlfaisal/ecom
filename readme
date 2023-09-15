@@ -1,0 +1,15 @@
+# Moc Ecom
+
+## Description
+A mock e-commerce platform. Users can simply browse packages and add them to the cart, then choose to check out.
+
+A user will be able to:
+1. Browse a goods catalogue.
+2. Add items to the cart.
+3. Remove items from the cart.
+4. Specify a quantity of an item.
+5. Checkout an order.
+
+An admin user will be able to: 
+1. See new orders that came in
+2. Accept an order
