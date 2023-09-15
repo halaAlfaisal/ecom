@@ -11,7 +11,7 @@ const miscHandlers = [
 const server = setupServer(...miscHandlers);
 
 server.listen({ onUnhandledRequest: "bypass" });
-console.info("🔶 Mock server running");
+console.info("🔶 server running");
 
 process.once("SIGINT", () => server.close());
 process.once("SIGTERM", () => server.close());
