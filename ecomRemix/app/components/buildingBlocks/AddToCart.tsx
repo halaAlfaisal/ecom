@@ -27,7 +27,7 @@ export const AddToCart: React.FC<AddToCartProps> = ({ item }) => {
         <div className="items-center">
           <button
             onClick={decrement}
-            className="bg-lime-500 text-white px-4 py-2 rounded md:w-auto"
+            className="bg-lime-500 text-white px-4 py-2 rounded md:w-auto hover:bg-lime-600"
           >
             -
           </button>
@@ -39,7 +39,7 @@ export const AddToCart: React.FC<AddToCartProps> = ({ item }) => {
           />
           <button
             onClick={increment}
-            className="bg-lime-500 text-white px-4 py-2 rounded md:w-auto"
+            className="bg-lime-500 text-white px-4 py-2 rounded md:w-auto hover:bg-lime-600"
           >
             +
           </button>
@@ -47,7 +47,7 @@ export const AddToCart: React.FC<AddToCartProps> = ({ item }) => {
       ) : (
         <button
           onClick={() => addToCart(item)}
-          className="bg-lime-500 text-white px-4 py-2 rounded md:w-auto"
+          className="bg-lime-500 text-white px-4 py-2 rounded md:w-auto hover:bg-lime-600"
         >
           Add to cart
         </button>

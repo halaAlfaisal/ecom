@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useReducer, ReactNode } from "react";
+import React, { createContext, useContext, useReducer, ReactNode, useEffect } from "react";
 
 type CartState = CartItem[];
 
 type Action =
   | { type: "ADD_QUANTITY"; id: string; item?: CartItem }
-  | { type: "SUBTRACT_QUANTITY"; id: string };
+  | { type: "SUBTRACT_QUANTITY"; id: string }
+  | { type: "CLEAR_CART" };
 
 const CartStateContext = createContext<CartState | undefined>(undefined);
 const CartDispatchContext = createContext<React.Dispatch<Action> | undefined>(
@@ -27,20 +28,31 @@ const cartReducer = (state: CartState, action: Action): CartState => {
         return [...state, { ...action.item, quantity: 1 }];
       }
     case "SUBTRACT_QUANTITY":
-      return state.map((item) =>
-        item.id === action.id
-          ? { ...item, quantity: Math.abs(item.quantity - 1) }
-          : item,
+      const updatedState = state.map((item) =>
+        item.id === action.id ? { ...item, quantity: item.quantity - 1 } : item,
       );
+      return updatedState.filter((item) => item.quantity > 0);
+    case "CLEAR_CART":
+      return [];
     default:
-      throw new Error(`Unknown action: ${action.type}`);
+      throw new Error(`Unknown action: ${action}`);
   }
 };
 
 type CartProviderProps = { children: ReactNode };
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, []);
+  const isClient = typeof window !== 'undefined';
+
+  const initialState = isClient ? JSON.parse(localStorage.getItem("cart") || "[]") : [];
+
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    if (isClient) {
+      localStorage.setItem("cart", JSON.stringify(state));
+    }
+  }, [state]);
 
   return (
     <CartDispatchContext.Provider value={dispatch}>

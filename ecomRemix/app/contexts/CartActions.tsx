@@ -16,5 +16,9 @@ export const useCartActions = () => {
     return cartItems;
   };
 
-  return { addToCart, subtractFromCart, getCart };
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
+  };
+
+  return { addToCart, subtractFromCart, getCart, clearCart };
 };
