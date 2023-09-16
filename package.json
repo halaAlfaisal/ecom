@@ -1,5 +1,6 @@
 {
-  "name": "ecomRemix-a674",
+  "name": "ecom-a674",
+  "version": "1.0.0",
   "private": true,
   "sideEffects": false,
   "scripts": {
