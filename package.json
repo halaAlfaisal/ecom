@@ -6,7 +6,6 @@
   "scripts": {
     "build": "remix build && prisma generate",
     "dev": "remix dev -c \"npm run dev:serve\"",
-    "postinstall": "prisma generate",
     "dev:serve": "binode --require ./mocks -- @remix-run/serve:remix-serve ./build",
     "format": "prettier --write .",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
