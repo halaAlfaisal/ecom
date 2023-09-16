@@ -14,9 +14,9 @@ export default function Index() {
   const user = useOptionalUser();
   const { items } = useLoaderData<typeof loader>();
   return (
-    <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
-      <div className="relative sm:pb-16 sm:pt-8">
-        <div className="mx-auto mt-16 flex items-center border-b-2 pb-8 mb-8 min-w-800">
+    <main className="relative min-h-screen bg-gray-100 sm:flex sm:items-center sm:justify-center">
+      <div className="relative sm:pb-16 sm:pt-8 bg-white px-4 sm:px-10">
+        <div className="mx-auto mt-8 sm:mt-16 flex items-center border-b-2 pb-4 sm:pb-8 mb-4 sm:mb-8 min-w-800">
           <img
             className="h-24 w-24 object-cover rounded-full"
             src="https://c02.purpledshub.com/uploads/sites/48/2020/08/GettyImages-500184907-0439932.jpg?w=1880&webp=1"
