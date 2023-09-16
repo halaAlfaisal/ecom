@@ -7,11 +7,12 @@ import { getItems } from "~/models/item.server";
 export const meta: V2_MetaFunction = () => [{ title: "StellarStuff" }];
 
 export const loader = async () => {
-  const items = await getItems();
-  if (!items) {
+  try {
+    const items = await getItems();
+    return json({ items });
+  } catch {
     return json({ items: [] });
   }
-  return json({ items });
 };
 
 export default function Index() {
