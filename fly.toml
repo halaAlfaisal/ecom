@@ -1,4 +1,4 @@
-app = "ecomRemix-a674"
+app = "ecom-a674"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = [ ]
