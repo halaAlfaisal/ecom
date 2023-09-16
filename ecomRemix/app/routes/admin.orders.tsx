@@ -1,4 +1,5 @@
 import { DataGrid } from '@mui/x-data-grid';
+import { OrderItem } from '@prisma/client';
 import { ActionArgs, json } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import invariant from 'tiny-invariant';
@@ -30,7 +31,6 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-
 export default function Orders() {
   const { orders } = useLoaderData<typeof loader>();
 
@@ -44,7 +44,7 @@ export default function Orders() {
       field: 'actions',
       headerName: 'Actions',
       flex: 1,
-      renderCell: (params) => {
+      renderCell: (params: OrderItem) => {
         const order = orders.find((order) => order.id === params.id);
         return (
           <div>
