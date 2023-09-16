@@ -4,7 +4,7 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
+    "build": "remix build && prisma generate",
     "dev": "remix dev -c \"npm run dev:serve\"",
     "postinstall": "prisma generate",
     "dev:serve": "binode --require ./mocks -- @remix-run/serve:remix-serve ./build",
