@@ -1,5 +1,5 @@
 import { json, type V2_MetaFunction } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Form, Link, useLoaderData } from "@remix-run/react";
 import Items from "~/components/Items";
 import { useOptionalUser } from "~/utils";
 import { getItems } from "~/models/item.server";
@@ -26,9 +26,7 @@ export default function Index() {
             <h1 className="ml-4 text-2xl font-bold leading-tight">
               Stellar Stuff
             </h1>
-            <p className="ml-4">
-              Your portal to premium stars and star dust
-            </p>
+            <p className="ml-4">Your portal to premium stars and star dust</p>
           </div>
         </div>
         <Items items={items} />
@@ -41,27 +39,22 @@ export default function Index() {
           </Link>
         </div>
         <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
-          {user ? (
-            <Link
-              to="/notes"
-              className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-yellow-700 shadow-sm hover:bg-yellow-50 sm:px-8"
-            >
-              View Notes for {user.email}
-            </Link>
-          ) : (
-            <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
+          {user && (
+            <div>
               <Link
-                to="/join"
+                to="/admin/orders"
                 className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-lime-700 shadow-sm hover:bg-lime-50 sm:px-8"
               >
-                Sign up
+                View orders for {user.email}
               </Link>
-              <Link
-                to="/login"
-                className="flex items-center justify-center rounded-md bg-lime-500 px-4 py-2 font-medium text-white hover:bg-lime-600"
-              >
-                Log In
-              </Link>
+              <Form action="/logout" method="post">
+                <button
+                  type="submit"
+                  className="rounded bg-slate-600 px-4 py-2 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
+                >
+                  Logout
+                </button>
+              </Form>
             </div>
           )}
         </div>

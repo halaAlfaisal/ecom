@@ -34,7 +34,7 @@ export const action = async ({ request }: ActionArgs) => {
     );
   }
 
-  if (password.length < 8) {
+  if (password.length < 3) {
     return json(
       { errors: { email: null, password: "Password is too short" } },
       { status: 400 },
@@ -62,7 +62,7 @@ export const meta: V2_MetaFunction = () => [{ title: "Login" }];
 
 export default function LoginPage() {
   const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") || "/notes";
+  const redirectTo = searchParams.get("redirectTo") || "/admin";
   const actionData = useActionData<typeof action>();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
