@@ -1,0 +1,11 @@
+{
+  "builds": [{ "src": "package.json", "use": "@vercel/node" }],
+  "build": {
+    "env": {
+      "BUILD_ENV": "production"
+    }
+  },
+  "scripts": {
+    "postinstall": "prisma generate"
+  }
+}
